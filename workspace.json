@@ -1,6 +1,28 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "faas-to-number": {
+      "root": "libs/faas/to-number",
+      "sourceRoot": "libs/faas/to-number/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/faas/to-number/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/faas/to-number"],
+          "options": {
+            "jestConfig": "libs/faas/to-number/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/workspace"
   }
