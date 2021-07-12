@@ -1,94 +1,83 @@
+# NX Microservices Webcrawler 🕷️
 
+This is a demo project that is meant to pull (webcrawl) data from different real state websites in Estonia and display all in one unified frontend.
 
-# NxWebcrawler
+This project uses [Nx monorepo](https://nx.dev) and it is meant to use microservices archtecture.
 
-This project was generated using [Nx](https://nx.dev).
+- Microservice 1: Web-puller
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+  - It should pull the raw html from a given URL
+  - It should add the content of the URL into a Kafka Topic
 
-🔎 **Smart, Extensible Build Framework**
+- Microservice 2: html-cleaner
 
-## Adding capabilities to your workspace
+  - It should accept as input a mapping from fields -> how to retrieve fields
+  - It should read data from the kafka topic
+  - It should save this formated data into either Kafka topic OR into mongodb database
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+- Microservice 3: rest API
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+  - It should retrive formatted data from the database send to whom requested it
 
-Below are our core plugins:
+- frontend 1: Next.js application
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+  - It will retrieve and display data from the rest API
+  - Add pagination OR infinite scrolling
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+- frontend 2: Vue.js application (To be decided)
 
-## Generate an application
+  - It will retrieve and display data from the rest API
+  - Add pagination OR infinite scrolling
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+- frontend 3: Angular.js application (To be decided)
+  - It will retrieve and display data from the rest API
+  - Add pagination OR infinite scrolling
 
-> You can use any of the plugins above to generate applications as well.
+## Stack
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+Backend:
 
-## Generate a library
+- Nx
+- Node.js
+- Jest.js (unity and integration testing)
+- Apache Kafka
+- Typescript
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+E2E testing:
 
-> You can also use any of the plugins above to generate libraries as well.
+- Cypress
 
-Libraries are shareable across libraries and applications. They can be imported from `@nx-webcrawler/mylib`.
+Frontend - React:
 
-## Development server
+- React.js with Next.js
+- Typescript
+- Storybook (To be decided)
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Other:
 
-## Code scaffolding
+- Docker
+- Kubernetes (to be decided)
+- Github actions (to be decided)
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+## How to Run the Project
 
-## Build
+// TODO
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## TODO list
 
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+| Task description                                    | Status |
+| --------------------------------------------------- | ------ |
+| Confirm whether at least 2 end points are reachable | Done   |
+| Setup Repo                                          | Done   |
+| Dockerize Application                               |        |
+| Try Kubernetes for development with Skaffold        |        |
+| Connect to Apache Kafka                             |        |
+| Send raw html into Apache Kafka                     |        |
+| Read raw files from Apache Kafka                    |        |
+| Clean the data using .json as input                 |        |
+| Decide data format in the database                  |        |
+| Send data into the Database                         |        |
+| Create Rest API                                     |        |
+| Read from the Database                              |        |
+| Design frontend                                     |        |
+| Read data from the Rest API                         |        |
