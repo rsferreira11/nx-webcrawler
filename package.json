@@ -27,6 +27,7 @@
   },
   "private": true,
   "dependencies": {
+    "kafkajs": "^1.15.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
