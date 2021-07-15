@@ -21,6 +21,27 @@
           }
         }
       }
+    },
+    "shared-kafka": {
+      "root": "libs/shared/kafka",
+      "sourceRoot": "libs/shared/kafka/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/kafka/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/kafka"],
+          "options": {
+            "jestConfig": "libs/shared/kafka/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

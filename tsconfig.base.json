@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-webcrawler/faas/toNumber": ["libs/faas/to-number/src/index.ts"]
+      "@nx-webcrawler/faas/toNumber": ["libs/faas/to-number/src/index.ts"],
+      "@nx-webcrawler/shared/kafka": ["libs/shared/kafka/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
